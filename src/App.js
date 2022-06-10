@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg"
+import "./App.css"
+import { Listar } from "./pages/listar"
+import { Consultar } from "./pages/consultar"
+import { Cadastrar } from "./pages/cadastrar"
+import { TextInput } from "./components/TextInput"
+import { TabSelector } from "./components/TabSelector"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className="App">
+			<Listar />
+			<Consultar />
+			<Cadastrar />
+			<TextInput />
+			<TabSelector />
+		</div>
+	)
 }
 
-export default App;
+export default App
