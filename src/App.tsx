@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Listar } from "./pages/Listar"
+import { Listar } from "./pages/listar"
 import { Consultar } from "./pages/consultar"
 import { Cadastrar } from "./pages/cadastrar"
 import { TabSelector } from "./components/TabSelector"
