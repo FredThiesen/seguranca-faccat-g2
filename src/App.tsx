@@ -1,8 +1,7 @@
 import React, { useState } from "react"
-import { Listar } from "./pages/Listar"
+// import { Listar } from "./pages/Listar"
 import { Consultar } from "./pages/Consultar"
 import { Cadastrar } from "./pages/Cadastrar"
-import { TextInput } from "./components/TextInput"
 import { TabSelector } from "./components/TabSelector"
 import { Wrapper } from "./styles"
 
@@ -10,9 +9,10 @@ const App = () => {
 	const [selectedTab, setSelectedTab] = useState<
 		"listar" | "consultar" | "cadastrar"
 	>("listar")
-	const renderListar = () => {
+	const renderListar = (): null => {
 		if (selectedTab !== "listar") return null
-		return <Listar />
+		// return <Listar />
+		return null
 	}
 	const renderConsultar = () => {
 		if (selectedTab !== "consultar") return null
