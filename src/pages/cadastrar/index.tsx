@@ -16,6 +16,7 @@ export const Cadastrar = () => {
 				onChange={setCpf}
 				placeholder={"Insira o cpf"}
 				label={"CPF"}
+				maxLength={11}
 			/>
 		)
 	}

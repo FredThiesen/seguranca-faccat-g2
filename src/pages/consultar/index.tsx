@@ -6,7 +6,7 @@ export const Consultar = () => {
 	const [nome, setNome] = useState("")
 	const [email, setEmail] = useState("")
 	const [telefone, setTelefone] = useState("")
-	const [cpf, setCpf] = useState<number>(0)
+	const [cpf, setCpf] = useState("")
 
 	const renderCpfInput = () => {
 		return (
@@ -16,6 +16,7 @@ export const Consultar = () => {
 				onChange={setCpf}
 				placeholder={"Insira o cpf"}
 				label={"CPF"}
+				maxLength={11}
 			/>
 		)
 	}

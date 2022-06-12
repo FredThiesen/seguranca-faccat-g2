@@ -22,4 +22,5 @@ export const Input = styled.input`
 export const Label = styled.div`
 	font-size: 1.5rem;
 	margin-bottom: 5px;
+	margin-top: 10px;
 `

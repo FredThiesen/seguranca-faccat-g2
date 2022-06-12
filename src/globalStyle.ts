@@ -12,7 +12,7 @@ export default createGlobalStyle`
     height: 100%;
   }
   body {
-    font: 15px 'Comfortaa', cursive;
+    font: 15px 'Roboto', sans-serif;
     background: #fafafa;
     color: #aaa;
     -webkit-font-smoothing: antialiased !important;
