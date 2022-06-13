@@ -1,8 +1,14 @@
 import React, { useState } from "react"
+import { Loading } from "../../components/Loading"
 import { TextInput } from "../../components/TextInput"
 import { Wrapper } from "./styles"
 
-export const Cadastrar = () => {
+interface CadatrarProps {
+	loading: boolean
+}
+
+export const Cadastrar = (props: CadatrarProps) => {
+	const { loading } = props
 	const [nome, setNome] = useState("")
 	const [email, setEmail] = useState("")
 	const [telefone, setTelefone] = useState("")
@@ -55,6 +61,10 @@ export const Cadastrar = () => {
 				label={"Nome"}
 			/>
 		)
+	}
+
+	if (loading) {
+		return <Loading />
 	}
 
 	return (

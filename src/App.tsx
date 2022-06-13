@@ -18,33 +18,36 @@ const App = () => {
 	const [selectedTab, setSelectedTab] = useState<
 		"listar" | "consultar" | "cadastrar"
 	>("listar")
+	const [loading, setLoading] = useState(false)
 
 	const handleLogin = async (login: string, senha: string) => {
+		setLoading(true)
 		const user = await getAuthentication({ login, senha })
 		setUser(user)
+		setLoading(false)
 	}
 
 	const renderListar = () => {
 		if (!user) return null
 		if (selectedTab !== "listar") return null
-		return <Listar />
+		return <Listar loading={loading} />
 	}
 	const renderConsultar = () => {
 		if (!user) return null
 		if (selectedTab !== "consultar") return null
 
-		return <Consultar />
+		return <Consultar loading={loading} />
 	}
 	const renderCadastrar = () => {
 		if (!user) return null
 		if (selectedTab !== "cadastrar") return null
 
-		return <Cadastrar />
+		return <Cadastrar loading={loading} />
 	}
 
 	const renderLogin = () => {
-		// if (user) return null
-		return <Login onLogin={handleLogin} />
+		if (user) return null
+		return <Login onLogin={handleLogin} loading={loading} />
 	}
 
 	return (

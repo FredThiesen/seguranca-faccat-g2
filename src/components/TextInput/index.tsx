@@ -11,20 +11,14 @@ interface TextInputProps {
 }
 
 export const TextInput = (props: TextInputProps) => {
-	const { type, value, onChange, placeholder, label, maxLength } = props
+	const { onChange, label } = props
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		onChange(e.target.value)
 	}
 	return (
 		<Wrapper>
 			<Label>{label}</Label>
-			<Input
-				type={type}
-				value={value}
-				onChange={handleChange}
-				placeholder={placeholder}
-				maxLength={maxLength}
-			/>
+			<Input {...props} onChange={handleChange} />
 		</Wrapper>
 	)
 }

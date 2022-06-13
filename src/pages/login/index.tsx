@@ -1,15 +1,22 @@
 import React, { useState } from "react"
+import { Button } from "../../components/Button"
+import { Loading } from "../../components/Loading"
 import { TextInput } from "../../components/TextInput"
 import { Wrapper } from "./styles"
 
 interface LoginProps {
 	onLogin: (username: string, password: string) => void
+	loading: boolean
 }
 
 export const Login = (props: LoginProps) => {
-	const { onLogin } = props
+	const { onLogin, loading } = props
 	const [login, setLogin] = useState("")
 	const [password, setPassword] = useState("")
+
+	if (loading) {
+		return <Loading />
+	}
 
 	return (
 		<Wrapper>
@@ -27,7 +34,10 @@ export const Login = (props: LoginProps) => {
 				value={password}
 				type={"text"}
 			/>
-			<button onClick={() => onLogin(login, password)}>Login</button>
+			<Button
+				onClick={() => onLogin(login, password)}
+				title="Fazer login"
+			/>
 		</Wrapper>
 	)
 }

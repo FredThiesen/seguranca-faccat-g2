@@ -13,7 +13,8 @@ interface WrapperTabProps {
 }
 
 export const WrapperTab = styled.button<WrapperTabProps>`
-	//remove native style from button element
+	align-items: center;
+	justify-content: center;
 	border: none;
 	background: none;
 	cursor: pointer;

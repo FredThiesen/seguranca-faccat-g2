@@ -1,8 +1,14 @@
 import React, { useState } from "react"
+import { Loading } from "../../components/Loading"
 import { TextInput } from "../../components/TextInput"
 import { Wrapper } from "./styles"
 
-export const Consultar = () => {
+interface ConsultarProps {
+	loading: boolean
+}
+
+export const Consultar = (props: ConsultarProps) => {
+	const { loading } = props
 	const [nome, setNome] = useState("")
 	const [email, setEmail] = useState("")
 	const [telefone, setTelefone] = useState("")
@@ -55,6 +61,10 @@ export const Consultar = () => {
 				label={"Nome"}
 			/>
 		)
+	}
+
+	if (loading) {
+		return <Loading />
 	}
 
 	return (

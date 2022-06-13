@@ -1,4 +1,4 @@
-import axios, { AxiosPromise, AxiosResponse } from "axios"
+import axios from "axios"
 
 const url = "https://api-g2-faccat.herokuapp.com/login"
 
@@ -7,12 +7,8 @@ interface UserLogin {
 	senha: string
 }
 
-interface UserResponse {
-	token: string
-}
-
-export const getAuthentication = async (data: UserLogin): Promise<any> => {
-	const response = axios.post(url, data)
+export const getAuthentication = async (data: UserLogin) => {
+	const response = await axios.post(url, data)
 	console.log(response)
-	return response
+	return response.data
 }
