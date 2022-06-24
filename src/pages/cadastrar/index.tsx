@@ -2,10 +2,16 @@ import React, { useState } from "react"
 import { Button } from "../../components/Button"
 import { Loading } from "../../components/Loading"
 import { TextInput } from "../../components/TextInput"
+import { User } from "../../interfaces/User"
 import { postCandidate } from "../../services/candidates"
 import { Wrapper } from "./styles"
 
-export const Cadastrar = () => {
+interface CadastrarProps {
+	user: User
+}
+
+export const Cadastrar = (props: CadastrarProps) => {
+	const { user } = props
 	const [nome, setNome] = useState("")
 	const [email, setEmail] = useState("")
 	const [telefone, setTelefone] = useState("")
@@ -18,7 +24,7 @@ export const Cadastrar = () => {
 	const handleSubmit = async () => {
 		setLoading(true)
 		if (!validInputs) return
-		await postCandidate({
+		await postCandidate(user.Authorization, {
 			nome,
 			email,
 			telefone,
@@ -34,8 +40,8 @@ export const Cadastrar = () => {
 				type={"number"}
 				value={telefone}
 				onChange={setTelefone}
-				placeholder={"Insira o número de telefone (Opcional)"}
-				label={"Telefone"}
+				placeholder={"Insira o número de telefone"}
+				label={"Telefone (Opcional)"}
 				maxLength={9}
 			/>
 		)
@@ -84,8 +90,8 @@ export const Cadastrar = () => {
 				type={"text"}
 				value={enderecoWeb}
 				onChange={setEnderecoWeb}
-				placeholder={"Insira o endereço web (Opcional)"}
-				label={"Endereço web"}
+				placeholder={"Insira o endereço web"}
+				label={"Endereço web (Opcional)"}
 			/>
 		)
 	}

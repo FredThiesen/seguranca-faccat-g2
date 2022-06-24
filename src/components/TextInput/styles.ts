@@ -12,8 +12,6 @@ export const Input = styled.input`
 	padding-top: 8px;
 	padding-bottom: 8px;
 	border-radius: 5px;
-	text-transform: uppercase;
-	font-weight: bold;
 	font-family: inherit;
 	background: #ddd;
 	color: #515151;

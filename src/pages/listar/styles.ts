@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 export const Wrapper = styled.div`
 	align-items: center;
-	width: 50%;
 	min-width: 450px;
 	justify-content: space-around;
 	border: 1px solid #ddd;

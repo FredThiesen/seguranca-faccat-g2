@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { getAuthentication } from "./services/authentication"
 import { Listar } from "./pages/listar"
 import { Consultar } from "./pages/consultar"
 import { Cadastrar } from "./pages/cadastrar"
@@ -17,7 +16,7 @@ const App = () => {
 	const renderListar = () => {
 		if (!user) return null
 		if (selectedTab !== "listar") return null
-		return <Listar />
+		return <Listar user={user} />
 	}
 	const renderConsultar = () => {
 		if (!user) return null
@@ -29,7 +28,7 @@ const App = () => {
 		if (!user) return null
 		if (selectedTab !== "cadastrar") return null
 
-		return <Cadastrar />
+		return <Cadastrar user={user} />
 	}
 
 	const renderLogin = () => {
