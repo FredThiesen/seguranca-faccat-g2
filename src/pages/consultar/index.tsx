@@ -3,16 +3,12 @@ import { Loading } from "../../components/Loading"
 import { TextInput } from "../../components/TextInput"
 import { Wrapper } from "./styles"
 
-interface ConsultarProps {
-	loading: boolean
-}
-
-export const Consultar = (props: ConsultarProps) => {
-	const { loading } = props
+export const Consultar = () => {
 	const [nome, setNome] = useState("")
 	const [email, setEmail] = useState("")
 	const [telefone, setTelefone] = useState("")
 	const [cpf, setCpf] = useState("")
+	const [loading, setLoading] = useState(false)
 
 	const renderCpfInput = () => {
 		return (

@@ -9,6 +9,5 @@ interface UserLogin {
 
 export const getAuthentication = async (data: UserLogin) => {
 	const response = await axios.post(url, data)
-	console.log(response)
 	return response.data
 }

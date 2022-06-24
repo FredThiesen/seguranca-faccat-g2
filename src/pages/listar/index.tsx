@@ -1,13 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import { Loading } from "../../components/Loading"
 import { Wrapper } from "./styles"
 
-interface ListarProps {
-	loading: boolean
-}
-
-export const Listar = (props: ListarProps) => {
-	const { loading } = props
+export const Listar = () => {
+	const [loading, setLoading] = useState(false)
 
 	if (loading) {
 		return <Loading />

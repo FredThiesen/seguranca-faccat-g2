@@ -8,6 +8,7 @@ interface TextInputProps {
 	placeholder: string
 	label: string
 	maxLength?: number
+	multiple?: boolean
 }
 
 export const TextInput = (props: TextInputProps) => {
