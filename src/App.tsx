@@ -12,17 +12,27 @@ const App = () => {
 	const [selectedTab, setSelectedTab] = useState<
 		"listar" | "consultar" | "cadastrar"
 	>("listar")
+	const [consultCandidateId, setConsultCandidateId] = useState<string | null>(
+		null
+	)
+
+	const handleConsultCandidate = (id: string) => {
+		setSelectedTab("consultar")
+		setConsultCandidateId(id)
+	}
 
 	const renderListar = () => {
 		if (!user) return null
 		if (selectedTab !== "listar") return null
-		return <Listar user={user} />
+		return (
+			<Listar user={user} onConsultCandidate={handleConsultCandidate} />
+		)
 	}
 	const renderConsultar = () => {
 		if (!user) return null
 		if (selectedTab !== "consultar") return null
 
-		return <Consultar />
+		return <Consultar id={consultCandidateId} user={user} />
 	}
 	const renderCadastrar = () => {
 		if (!user) return null

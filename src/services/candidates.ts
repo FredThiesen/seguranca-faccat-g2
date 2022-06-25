@@ -20,7 +20,10 @@ export const getCandidatos = async (jwt: string) => {
 	return response.data
 }
 
-export const getCandidate = async (jwt: string, id: number) => {
+export const getCandidate = async (
+	jwt: string,
+	id: string
+): Promise<Candidato> => {
 	const config = makeConfig(jwt)
 	const response = await axios.get(url + "candidatos/" + id, config)
 	return response.data
@@ -43,7 +46,7 @@ export const updateCandidate = async (jwt: string, candidate: Candidato) => {
 	return response.status === 200 ? true : false
 }
 
-export const deleteCandidate = async (jwt: string, id: number) => {
+export const deleteCandidate = async (jwt: string, id: string) => {
 	const config = makeConfig(jwt)
 	const response = await axios.delete(url + "candidatos/" + id, config)
 	return response.status === 200 ? true : false

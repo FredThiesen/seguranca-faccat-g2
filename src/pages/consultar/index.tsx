@@ -1,63 +1,32 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import { Candidate } from "../../components/Candidate"
 import { Loading } from "../../components/Loading"
 import { TextInput } from "../../components/TextInput"
+import { Candidato } from "../../interfaces/Candidato"
+import { User } from "../../interfaces/User"
+import { getCandidate } from "../../services/candidates"
 import { Wrapper } from "./styles"
 
-export const Consultar = () => {
-	const [nome, setNome] = useState("")
-	const [email, setEmail] = useState("")
-	const [telefone, setTelefone] = useState("")
-	const [cpf, setCpf] = useState("")
+interface ConsultarProps {
+	user: User
+	id: string | null
+}
+
+export const Consultar = (props: ConsultarProps) => {
+	const { id, user } = props
+	const [candidate, setCandidate] = useState<Candidato | null>(null)
 	const [loading, setLoading] = useState(false)
 
-	const renderCpfInput = () => {
-		return (
-			<TextInput
-				type={"number"}
-				value={cpf}
-				onChange={setCpf}
-				placeholder={"Insira o cpf"}
-				label={"CPF"}
-				maxLength={11}
-			/>
-		)
+	const handleGetCandidate = async () => {
+		setLoading(true)
+		const candidate = await getCandidate(user.Authorization, id)
+		setLoading(false)
+		if (candidate) setCandidate(candidate)
 	}
 
-	const renderTelefoneInput = () => {
-		return (
-			<TextInput
-				type={"number"}
-				value={telefone}
-				onChange={setTelefone}
-				placeholder={"Insira o número de telefone"}
-				label={"Telefone"}
-			/>
-		)
-	}
-
-	const renderEmailInput = () => {
-		return (
-			<TextInput
-				type={"text"}
-				value={email}
-				onChange={setEmail}
-				placeholder={"Insira o email"}
-				label={"Email"}
-			/>
-		)
-	}
-
-	const renderNomeInput = () => {
-		return (
-			<TextInput
-				type={"text"}
-				value={nome}
-				onChange={setNome}
-				placeholder={"Insira o nome"}
-				label={"Nome"}
-			/>
-		)
-	}
+	useEffect(() => {
+		handleGetCandidate()
+	}, [id])
 
 	if (loading) {
 		return <Loading />
@@ -65,10 +34,9 @@ export const Consultar = () => {
 
 	return (
 		<Wrapper>
-			{renderCpfInput()}
-			{renderNomeInput()}
-			{renderEmailInput()}
-			{renderTelefoneInput()}
+			{candidate && (
+				<Candidate candidate={candidate} hideCandidateButton complete />
+			)}
 		</Wrapper>
 	)
 }

@@ -8,10 +8,11 @@ import { Wrapper } from "./styles"
 
 interface ListarProps {
 	user: User
+	onConsultCandidate: (id: string) => void
 }
 
 export const Listar = (props: ListarProps) => {
-	const { user } = props
+	const { user, onConsultCandidate } = props
 	const [loading, setLoading] = useState(false)
 	const [candidates, setCandidates] = useState<Array<Candidato>>([])
 
@@ -22,6 +23,10 @@ export const Listar = (props: ListarProps) => {
 		setLoading(false)
 	}
 
+	const handleCandidateClick = (candidate: Candidato) => {
+		onConsultCandidate(candidate.id)
+	}
+
 	useEffect(() => {
 		handleFetchCandidates()
 	}, [])
@@ -29,7 +34,13 @@ export const Listar = (props: ListarProps) => {
 	const renderCandidates = () => {
 		if (candidates.length)
 			return candidates.map((candidate: Candidato) => {
-				return <Candidate candidate={candidate} key={candidate.id} />
+				return (
+					<Candidate
+						candidate={candidate}
+						key={candidate.id}
+						onCandidateClick={handleCandidateClick}
+					/>
+				)
 			})
 		return null
 	}
