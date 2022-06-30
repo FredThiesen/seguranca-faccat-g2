@@ -23,7 +23,11 @@ export const Cadastrar = (props: CadastrarProps) => {
 
 	const handleSubmit = async () => {
 		setLoading(true)
-		if (!validInputs) return
+		if (!validInputs) {
+			setLoading(false)
+			alert("Preencha todos os campos obrigatórios")
+			return
+		}
 		await postCandidate(user.Authorization, {
 			nome,
 			email,
